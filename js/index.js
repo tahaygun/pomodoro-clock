@@ -14,6 +14,7 @@ $(document).ready(function () {
    var timerC;
    var Bcount=5;
    var status=false;
+   var pauseStatus= false;
    var buzzer = document.getElementById("sound");
 
     add5.click(function(){
@@ -48,26 +49,16 @@ $(document).ready(function () {
         $('.hide-start, #add5, #sub5,#Badd5,#Bsub5,#btime,#breakclock,.inline2').hide(); 
         $("#progressdiv").show();
         $("#timer").addClass("changepointer");
-        var clock=$(".changepointer");
         $('#progressbar').css("width",`100%`);
         $("#container").css("background","rgba(175, 253, 238, 0.365)");
         status=true;  
-        count *=60;
+        // count *=60;
         var maxval=count;
         var progresscount=100;
+        pauseStatus= true;
         timerC= setInterval(counter, 1000);
         
-        clock.click(function(){
-            if (status===true) {
-                clearInterval(timerC);
-                $("#resetdiv").show();
-                status=false;
-            }else if(status===false){
-                timerC = setInterval(counter,1000);
-                $("#resetdiv").hide();
-                status=true;           
-            } 
-         });
+     
         function counter(){
             if(count>0){
                 count--;
@@ -82,50 +73,62 @@ $(document).ready(function () {
             }else{
                 buzzer.play();
                 clearInterval(timerC);
-
-                return breaktime();
+                pauseStatus= false;
+                return breaktimef();
             }
            
         }
+            $(".changepointer").click(function(){
+            if (status===true && pauseStatus===true) {
+                clearInterval(timerC);
+                $("#resetdiv").show();
+                status=false;
+            }else if(status===false &&pauseStatus===true){
+                timerC = setInterval(counter,1000);
+                $("#resetdiv").hide();
+                status=true;           
+            } 
+         });
+   });
 
-        function breaktime(){
+        function breaktimef(){
             progresscount=100; 
             work.html(Bcount);
+            $("#timer").removeClass("changepointer");
             $('#progressbar').css("width",`100%`);
             $('#progressbar').addClass("bg-warning");
-            // $("#resetdiv").show();
-            $("#timer").removeClass("changepointer"); 
+            $("#resetdiv").show();
             $("#container").css("background","rgba(171, 223, 245, 0.365)"); 
             $("#header").html("Break");
             Bcount *=60;
             maxval=Bcount;
             var Btimer= setInterval(Bcounter, 1000);
-            function Bcounter(){
-                if(Bcount>0){
-                    Bcount--;
-                    progresscount=progresscount-(100/maxval);
-                    $('#progressbar').css("width",`${progresscount}%`);
-                    var Bmin = Math.floor(Bcount/60);
-                    var Bmin1 =("0" + Bmin).slice(-2);
-                    work.html(Bmin1);
-                    var Bsec=Math.floor(Bcount%60);
-                     var Bsec2=("0" + Bsec).slice(-2);
-                     worksec.html(Bsec2);
-                }else{
-                    clearInterval(Btimer);
-                    buzzer.play();
-                    return reset();
+                function Bcounter(){
+                    if(Bcount>0){
+                        Bcount--;
+                        progresscount=progresscount-(100/maxval);
+                        $('#progressbar').css("width",`${progresscount}%`);
+                        var Bmin = Math.floor(Bcount/60);
+                        var Bmin1 =("0" + Bmin).slice(-2);
+                        work.html(Bmin1);
+                        var Bsec=Math.floor(Bcount%60);
+                        var Bsec2=("0" + Bsec).slice(-2);
+                        worksec.html(Bsec2);
+                    }else{
+                        clearInterval(Btimer);
+                        buzzer.play();
+                        return resetF();
+                    }    
                 }
-               
             }
 
-        }
-        function reset(){
-            $("#resetdiv").show();
-            $("#container").css("background","rgba(209, 229, 238, 0.365)");
-            $('#progressbar').removeClass("bg-warning");
-        }
-   });
+            function resetF(){
+                $("#resetdiv").show();
+                $("#container").css("background","rgba(209, 229, 238, 0.365)");
+                $('#progressbar').removeClass("bg-warning");
+            }
+
+  
 
    reset.click(function(){
     location.reload();
