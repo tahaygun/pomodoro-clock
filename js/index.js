@@ -10,7 +10,6 @@ $(document).ready(function () {
    var start= $("#start");
    var reset=$("#reset");
    $("#resetdiv,#progressdiv").hide();
-   var clock=$("#timer");
    var count =25;
    var timerC;
    var Bcount=5;
@@ -49,6 +48,7 @@ $(document).ready(function () {
         $('.hide-start, #add5, #sub5,#Badd5,#Bsub5,#btime,#breakclock,.inline2').hide(); 
         $("#progressdiv").show();
         $("#timer").addClass("changepointer");
+        var clock=$(".changepointer");
         $('#progressbar').css("width",`100%`);
         $("#container").css("background","rgba(175, 253, 238, 0.365)");
         status=true;  
@@ -58,17 +58,14 @@ $(document).ready(function () {
         timerC= setInterval(counter, 1000);
         
         clock.click(function(){
-            console.log("tst");
             if (status===true) {
                 clearInterval(timerC);
                 $("#resetdiv").show();
                 status=false;
-                console.log(status);
             }else if(status===false){
                 timerC = setInterval(counter,1000);
                 $("#resetdiv").hide();
-                status=true;
-                console.log(status);                
+                status=true;           
             } 
          });
         function counter(){
@@ -85,6 +82,7 @@ $(document).ready(function () {
             }else{
                 buzzer.play();
                 clearInterval(timerC);
+
                 return breaktime();
             }
            
@@ -95,8 +93,10 @@ $(document).ready(function () {
             work.html(Bcount);
             $('#progressbar').css("width",`100%`);
             $('#progressbar').addClass("bg-warning");
+            // $("#resetdiv").show();
+            $("#timer").removeClass("changepointer"); 
             $("#container").css("background","rgba(171, 223, 245, 0.365)"); 
-            $("#header").html("Break time");
+            $("#header").html("Break");
             Bcount *=60;
             maxval=Bcount;
             var Btimer= setInterval(Bcounter, 1000);
