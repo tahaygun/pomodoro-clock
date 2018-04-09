@@ -52,7 +52,7 @@ $(document).ready(function () {
         $('#progressbar').css("width",`100%`);
         $("#container").css("background","rgba(175, 253, 238, 0.365)");
         status=true;  
-        // count *=60;
+        count *=60;
         var maxval=count;
         var progresscount=100;
         pauseStatus= true;
