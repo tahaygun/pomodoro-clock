@@ -11,8 +11,21 @@ body{
         font-size: 60px;
         font-family: 'Poiret One', cursive;
     }
+    .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+        background-color: rgba(255, 242, 4, 0.731) !important;
+        border-color: rgba(255, 255, 255, 0.11) !important;
+        color: black;
+        font-weight: 500;
+    }
     #Bsub5,#Badd5,#sub5,#add5{
         margin: 10px;
+        
+    }
+    #startButton{
+        background-color: rgba(231, 80, 80, 0.717) !important;
+        border-color: rgba(224, 33, 33, 0.634) !important;
+        color: white;
+        font-weight: 500;
     }
     #timer,#breakclock{
         font-family: 'Julius Sans One', sans-serif;
