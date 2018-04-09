@@ -1,2 +1,2 @@
-<h2>Live version of project: <a target=_blank; href="https://pomodorot.herokuapp.com
-"> Pomodoro Clock </a></h2>
+<h2>Live version of project: <a href="https://pomodorot.herokuapp.com
+" target="_blank"> Pomodoro Clock </a></h2>
