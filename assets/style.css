@@ -1,0 +1,98 @@
+body{
+    text-align: center;
+    margin: 10pc;
+}
+    .inline, .inline2{
+        display: inline-block;
+        margin: 25px;
+        padding: 20px;
+    }
+    h3, #header, #btime{
+        font-size: 60px;
+        font-family: 'Poiret One', cursive;
+    }
+    #Bsub5,#Badd5,#sub5,#add5{
+        margin: 10px;
+    }
+    #timer,#breakclock{
+        font-family: 'Julius Sans One', sans-serif;
+    
+    }
+    #resbutton{
+        margin-top: 25px;
+    }
+    .changepointer{
+        cursor: pointer;
+    }
+    body:before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        
+        display: block;
+        background-image: url('https://wallpaperscraft.com/image/clock_hands_dial_black_white_old_9434_1920x1080.jpg');
+        background-size:cover;
+        width: 100%;
+        height: 100%;
+        
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(4px);
+      }
+      #info{
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+
+      #body {
+        overflow: auto;
+        position: relative;
+      }
+      #container {
+        color: rgb(0, 0, 0);
+        margin: auto;
+        background: rgba(209, 229, 238, 0.365);
+        padding: 25px;
+        border-radius: 25px;
+        box-shadow: 0 0 5px gray;
+      }
+
+      #startButton{
+          width: 100px;
+      }
+
+#progressdiv{
+    margin: auto;
+    width: 50%;
+}
+
+#container2{
+    max-width: 50%;
+    margin: auto; 
+}
+
+@media screen and (max-width: 768px) {
+    h3, #header, #btime{
+        font-size: 45px;
+        font-family: 'Poiret One', cursive;
+    }
+    #Bsub5,#Badd5,#sub5,#add5{
+        margin: 1px;
+        padding: 0;
+        display: inline-block;
+    }
+    body{
+       margin: 80px;
+    }
+    #progressdiv{
+        margin:4px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
